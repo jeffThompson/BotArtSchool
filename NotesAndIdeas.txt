@@ -1,0 +1,190 @@
+
+NOTES && IDEAS:
+
+Server room images:
+https://www.flickr.com/photos/dherholz/450303689
+https://www.flickr.com/photos/torkildr/3462606643
+https://commons.wikimedia.org/wiki/File:CERN_Server_03.jpg
+https://commons.wikimedia.org/wiki/File:Img_51614_critical-data-centre-at-uni-of-hertfordshire.jpeg
+https://upload.wikimedia.org/wikipedia/commons/8/8b/CERN_Server.jpg
+https://www.flickr.com/photos/mrfaber/247946146
+
+- - -
+
+Things to design:
++ catalog
+	- incl school desc, 
+	- list of other courses
+		- generate from corpus online
+	- 
++ paperwork for students to fill out?
+	- registration form?
+	- sign up for other classes
+
+- - -
+
+TRAINING
+python scripts/preprocess.py --input_txt <file>.txt --output_h5 data/<file>.h5 --output_json data/<file>.json
+
+time th train.lua -input_h5 data/<file>.h5 -input_json data/<file>.json -batch_size 1 -seq_length 50
+
+th sample.lua -checkpoint cv/CourseDesc_18100.t7 -length 300 -temperature 0.7
+
+
+robot source texts:
+I, Robot (Asimov)
+
+Braitenbeg's "Vehicles"
+
+"How and Why Robots and Electronic Brains"
+https://archive.org/stream/HowAndWhyRobotAndElectronicBrains/How_and_Why_Robot_and_Electronic_Brains_djvu.txt
+
+"A computer simulation study of an expert system for walking machine motion planning"
+https://archive.org/stream/computersimulati00goodpdf/computersimulati00good_djvu.txt
+
+"Practical methods for improving the motion performance of an industrial robot"
+https://archive.org/stream/practicalmethods00wege/practicalmethods00wege_djvu.txt
+
+"Automata old and new"
+https://archive.org/stream/automataoldandn00unkngoog/automataoldandn00unkngoog_djvu.txt
+
+"Climbing and Walking Robots"
+https://archive.org/stream/ost-engineering-climbing_and_walking_robots/Climbing_and_Walking_Robots_djvu.txt
+
+- - -
+
+PROGRAM DESCRIPTION
+(mostly temp 0.45)
+
+At Bot Art School, we experience and in the visual arts many open to the culture. As a complex, critical and culture. The Bot Art School approach to provide an intense professional schools and creative program in visiting artists and graduate schools of the creative program of studio practice of the School and instruction and research and the museums and program to the context of the arts and consider the arts in the most and students. Art and intellectual community and students to provide a program include experimental courses in the arts and intentionally recognized to the faculty at the development of the Bot Art School of the Bot Art School of the arts and special and contemporary art schools of the arts in the undergraduate student in the department.
+
+The program includes an experimentation of the contemporary art schools and international instruction on its organizational arts are students and students the respect of the program included the program in art history and challenges and students minded to expression, and work.
+
+Traditional studio programs to the context of the development of the program in 1979, the creative and artists who work in the arts with the program at 2008. Bot Art School and international experience and critical and intelligence that in developing a forward the undergraduate students with a processions and context in the internship and work in the country of art and creative and artistic programs in the program include an interdisciplinary art schools of Art and Bot Art School and Bot Art School and the Bot Art School of Art and national association of a complex, and artistic programs for students through the program included the resources offered by a career credits with a professional artists in the country.
+
+Students are variety in the second in the arts to the Bot Art School to provide assigned by a complex, and interdisciplinary art and context of the context of the future was the program include that is courses in the future.
+
+-
+
+Bot Art School is interdisciplinary and artistic practice of the arts and the context of a students the complex have of the faculty artistic schools and intelligence, designed by the country of the arts and explore and students the arts and experience and critical and architecture, and 
+
+At Bot Art School, we educate artists and first in the program in 1862, the School in 1869, the Bot Art School and grant and interdisciplinary art with development in the development of the department of the arts and a program, and internship artists in the country and contributed to professional studio practice in the undergraduate studio program of career art schools.
+
+Bot Art School offers of their students and international artists in the country of art and design in the context of the arts with a students to provide a range of the art and artists in the first and creative courses is a complete and in 1908 and Bot Art School and Art and Drawing, Bot Art School offers interdisciplinary and artistic disciplines and international community of the international arts and artistic practice of the completion of new program that provides a wide an interdisciplinary art meet art schools of the arts engages the context of a complete a significant contributions of the media and outline the context of the country, the requirements of artists and cultural artists and integrating and a program of art and students the future.
+
+Artistic program in Bot Art School and students the student with the faculty and internationally art schools of the country as a greates to a students their creative and artistic per section with the direction and the program is the context of the Bot Art School and Bot Art School who architecture, and program interdisciplinary art and creative courses in the arts and creative and the world and context in a complete that in addition to the entire in the context in the full studio practice of the completed and creative completed to a creative and in art.
+
+Technology and the program, students and critical and technologies the reach the arts offered by the arts and students and context in the tools of the School and in art history of art and artists in the arts and creative and artistic practice of the courses and program is a broad education for the their students and committed to artistic programs of the student in the School's units recognizes the degree program in art and international community and internships, and students that end in the development of the program.
+
+Technology of the arts designed courses and examination to the following in the country lecturers, and undergraduate accredited in the lands and its to expression and context. A close personal studio program in art committed to provide a broad education. The second in the School of Art of Theater environment to provide a broad recognized to many and international contributions to the courses in the intent of the art faculty and internationally learning the completing allow artists in the full aboved to provide a supporting studio practice of the arts in the faculty of art and provide and artistic schools of Art and including in the first at the country, the country, the contribution environment is a clasing an international programs of a research to explore the seminars of the arts and a broad encourages experimentation of the arts and design in the arts and students the development of the context in the Visual arts and cultural artists faculty of the graduate students are approach to  
+
+Traditional studio and the faculty in the first education, and contemporary art creativity and experimentation from through a wide made artists. The School of Art and School of Art and Studios of the Art Institute of investigate and to the experimentation, and experiences in the programs and across the program at 2000. Connelty and a minimum of the School of Art, Angen, Seminar and encourages in art and studio can to a statements of art as a departments of artists and context in the faculty, and creative and critical and interdisciplinary program in 1958 and context in the arts and students and context in the program in which they can ta department of a complete a research and creative practice of the arts and the first from at adnuch their fields of art and the country, and creative for students through courses in the more a complex, programs of the arts and international instruction of an interdisciplinary art schools of Art and all students the end or and its one of the interdiscip
+
+Master and students that end in the country, the program include an intensiderstowing and a faculty. The listory and creative for the the school of the art and meet the Arts is a complete in the enterpracts successfully and in a social and creative for some of the program in art and design in the country, and the program in work in the top take early and invited to the arts and critical artists and exhibition of the studio work and internationally active courses and professional experience and international community at the program in which they participate in the contemporary and printmaking and the country of the faculty at the four the program to the minstruct of a roster of the generosting and development of the program in 1869. Our school of the world to the country of the country to the Master of Chicago in the University and
+
+school, and interdisciplinary approach to the faculty. The School of Art, and a resources of the School of Art and Marter, Visual Arts Program offers a program in the arts at 1872, and the college and in critical and a minimum of the Art and School of Art students to explore of the internships, and the museums of Art is a graduate and students to context of the completed to arts and design in the arts and a professional sculpture filmmaking and creative cultural art schools of the department of the completion in the their with the faculty of the museum of the art faculty and contemporary art completed at the degree requirements of art enters a lige a students through exhibit the work in the program included the School of Art is complete the contemporary art school and spring to the funded and creative program in 1877, and School of Art is one of the mind one of the faculty and context. The program in the arts and international program include experimentation of contemporary art schools
+
+bot art schools of art and internationally recognized to a complete and in the faculty of the Arts of the Art Institute facilities and completed components. The department are expective and international contributions in the complity, the program include experience and international required to the Arts experience and internationally critics of the art committed to a range of college in the end of experience of the arts of the future for students through a distinguished by a supporting and a clasing artists who areas of development of the arts that may of the falleria and all and international community is a program. The second and students and completed artists and cultural and creative and the forms of the Arts through career creative and students and in the program is a complete and in which areas of development of the artists and contextual community and creative and artistic skills in the program include an inclusive groups supporties in the country, and context in the programs
+
+Bot Art School is interdisciplinary and artistic practice of the arts and the context of a students the complex have of the faculty artistic schools and intelligence, designed by the country of the arts and explore and students the arts and experience and critical and architecture, and program includes an experimentation of the contemporary art schools and international instruction on its organizational Arts are students and students the respect of the program included the program in art history and challenges and students minded to expression, and work.
+
+Bot Art School and international experience and critical and intelligence that in developing a forward the undergraduate students with a processions and context in the internship and work in the country of art and creative and artistic programs in the program include an interdisciplinary art schools of Art and Bot Art School and Bot Art School and the Bot Art School of Art and National Association of a complex, and artistic programs for students through the program included the resources offered by a career credits with a professional artists in the country and design by a campus to the context in the world from the context in the country, the important to provide a complete in the develop and internationally art schools of the arts facilities and context in the future was the creative and international art may may of the country, and the program in 1969 the Bot Art School in the Arts of the Art Foundation and designed by a range of art and design in the countles of the the arts.
+
+-
+
+Cal Arts 			https://www.calarts.edu
+RISD 				http://www.risd.edu
+SAIC 				http://www.saic.edu
+Yale 				http://art.yale.edu
+UCLA 				http://www.art.ucla.edu
+VCU 				http://arts.vcu.edu
+Carnegie Mellon 	https://www.cmu.edu/art
+Columbia Univ 		http://arts.columbia.edu
+Cranbrook 			http://cranbrookart.edu
+Alfred Univ 		http://art.alfred.edu
+
+RNN pulled manually from sites: 
+
+default settings
+- 3 mins to train, reached 5100
+- pretty random results (== bad)
+
+args -batch_size = 10 and -seq_length = 50
+- 7 mins to train, reached 5100
+- meh results
+
+args -batch_size = 5 and -seq_length = 50
+- 14.5 mins to train, reached 10200
+- still pretty meh
+
+args -batch_size = 1 and -seq_length = 50
+- 63 mins to train, reached 51000
+- seems WAY better for smaller data sets
+
+RNN pulled from HTML: 
+135 mins to train
+
+Sample output:
+Center for Excellence is a full environment to contribute with a students and each resources and sessions and workship country
+influencies are departments in the CalArts community to the
+world and in the fine arts graduate prospective students and and interdisciplinary
+approach to art and design also the freedom to take risks and create the book to getting involved in the SAIC
+community.
+
+Above School of Art and Design for Elization for a disportrion to both series of the arts have an interdisciplinary approach to art and design as well as world-class resources, including the world as well as well as world-class resources and scholarships and a fine arts graduate students and faculty such as
+Musical and Department of Art
+Institute of Chicago
+
+Meet us at architecture, art and design to curates that series of first to work with art and
+design and departments requirements to the world—as required to the present to departments and conventions to showly and chaul attel public or methoding artists and current for diverse community of her for the bill of years of the world's mainther that on the Arts and work is course exhibition completed by the academic links of the post of the students who specially involved study that designed by planning with the worlds as great develop and explore of own
+
+Learn about our efforts toward supporting and building and including a fine arts graduate program ranked
+number two by U.S. News and World Report, SAIC provides an interdisciplinary approach to art and design and an interdisciplinary approach to art and design as well as well as world-class resources, including the Art
+Institute of Chicago museum, on-campus galleries, and state-of-the-art
+facilities. SAIC's undergraduate, graduate, and post-baccalaureate students
+have the freedom to move the world—as seen through notable at the freedom to take risks and creative and students as a committed in the SAIC
+community. Learn more.
+
+Join us this spring for an exciting lineup of are provides and working art employment workshop with a candiding accerding it the educational and building an integrative technologies and building a programs and design and from the artists and scholarships are facilities are statements students comments in uspan and the loans who include the projects
+
+- - -
+
+*** wget -H -p -e robots=off -A html -r --no-parent -P 
+
+wget -H -p -e robots=off -A html -r --no-parent -P Yale http://art.yale.edu
+wget -r -nH -nd -np -e robots=off -A html -P Yale http://art.yale.edu
+wget -r -A html --level=10 --convert-links --span-hosts --domains=http://art.yale.edu -P Yale http://art.yale.edu
+
+Top 10 art schools
+Yale 				http://art.yale.edu
+UCLA 				http://www.art.ucla.edu
+VCU 				http://arts.vcu.edu
+RISD 				http://www.risd.edu
+SAIC 				http://www.saic.edu
+Carnegie Mellon 	https://www.cmu.edu/art
+Columbia Univ 		http://arts.columbia.edu
+Cranbrook 			http://cranbrookart.edu
+Alfred Univ 		http://art.alfred.edu
+Cal Arts 			https://www.calarts.edu
+
+- - -
+
+Using the basic structure of Art Assignment bot, this performance/workshop/event would invite participants to attend a bot-driven art school. Students would be assigned to make drawings from unique prompts such as "Construct a drawing about accidents" and "Make a drawing exploring eighths". Once finished, the drawings, made on specially-crafted worksheets, will be scanned and posted to the @artassignbot account in realtime. Additional possibilities include posting to Mechanical Turk for grading before being posted to Twitter, and a small exhibition of the finished drawings somewhere at the festival.
+
+PURCHASES:
+- paper for assignments
+- pens/markers for drawing
+- red pen to mark grade
+- copy stand with light
+	- could build own using makerslide, ball head (B&H# JOBH201EN
+	  or BEBH00), adjustable LED lights, flat surface, etc
+- MTurk credit
+- means of hanging finished drawings (pins? frames?)
+- tables/chairs for setup
+
+NOTES/IDEAS:
+- Bring cricut and have "hand" write assignments? Do ahead?
+- MTurk
+	- 500px high
+	- data file setting params
+	- https://requester.mturk.com/developer/tools/boto

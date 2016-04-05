@@ -10,6 +10,20 @@ blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:none}
 table{border-collapse:collapse;border-spacing:0}
 
+/* SNELLEN */
+@font-face {
+    font-family: 'Snellen';
+    src: url('fonts/snellen-webfont.eot');
+    src: url('fonts/snellen-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/snellen-webfont.woff2') format('woff2'),
+         url('fonts/snellen-webfont.woff') format('woff'),
+         url('fonts/snellen-webfont.ttf') format('truetype'),
+         url('fonts/snellen-webfont.svg#snellenmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 
 /* MAIN CSS */
 html, body {	
@@ -36,12 +50,13 @@ html, body {
 	max-width: 700px;
 	min-width: 300px;
 	margin: 0 auto;
-	padding: 0 0 30px 0;
+	padding: 40px 0 30px 0;
 }
 footer {
 	width: 100%;
 	padding: 30px 0;
 	background-color: #f35645;
+	color: white;
 }
 
 img {
@@ -51,9 +66,10 @@ img {
 	margin: 0 auto;
 }
 h1 {
+	font-family: 'Snellen', 'Cardo', serif;
 	font-size: 1.2em;
-	line-height: 1.3em;
-	margin-bottom: 1.5em;
+	line-height: 2em;
+	margin-bottom: -0.5em;
 }
 p {
 	font-size: 1.2em;
@@ -82,8 +98,12 @@ a:active, a:hover {
 #main a:active, #main a:hover {
 	background-color: #f35645;
 }
+footer a, footer a:link, footer a:visited {
+	color: white;
+}
 footer a:active, footer a:hover {
 	background-color: white;
+	color: black;
 }
 
 

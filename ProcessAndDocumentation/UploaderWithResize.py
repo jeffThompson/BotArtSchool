@@ -17,22 +17,22 @@ from OAuthSettings_BOTTEST import settings
 
 
 # image adjustments
-contrast_adjust = 	1.1		# 1 = no change, 0.5 = 50%, 1.5 = 150%
-brightness_adjust = 1.3		# ditto
+contrast_adjust = 	0.5		# 1 = no change, 0.5 = 50%, 1.5 = 150%
+brightness_adjust = 1.5		# ditto
 sharpness_adjust = 	1.0		# 0.5 = no change, 0 = blurry, 1 = sharper
+output_width = 		900		# twitter image size (px)
 
 # other settings
 add_BAS_hashtag = 	True
 add_AND_hashtag = 	False
-grade_it =  		False
 
 image_path = '/Users/JeffThompson/Pictures/Eyefi/'
 
-cyan = 		 '\033[36m'
-bold = 		 '\033[1m'
-reverse = 	 '\033[7m'
-end = 		 '\033[0m'
-del_line =   '\x1b[1A' + '\x1b[2K'
+cyan = 		'\033[36m'
+bold = 		'\033[1m'
+reverse = 	'\033[7m'
+end = 		'\033[0m'
+del_line =  '\x1b[1A' + '\x1b[2K'
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
@@ -56,66 +56,32 @@ os.system('cls' if os.name=='nt' else 'clear')
 print bold + reverse + center('BOT ART SCHOOL UPLOADER') + end + '\n'
 
 
-# if assignment has id, load info from that
-print bold + center('ID #') + end + cyan
-success = False
-assign_id = raw_input()
-if assign_id != '':
-	for line in reversed(open('../WorksheetGenerator/AssignmentsGiven.txt').readlines()):
-		line = line.strip()
-		data = line.split(',')
-		if data[0] == assign_id:
-			assignment = data[1]
-			name = data[2]
-			handle = data[3]
-			if len(handle) == 0:
-				handle = ''
-			success = True
-			print del_line + center(assign_id) + end + '\n'
-			break
-
-
-# otherwise, input info manually
+# input info
 print bold + center('Assignment') + end + cyan
-if not success:
-	assignment = raw_input()
+assignment = raw_input()
 if assignment.endswith('.'):
 	assignment = assignment[:-1]
 if len(assignment) > 60:
-	if not success:
-		print del_line,
-	print split_center(assignment) + end + '\n'
+	print del_line + split_center(assignment) + end + '\n'
 else:
-	if not success:
-		print del_line,
-	print center(assignment) + end + '\n'
+	print del_line + center(assignment) + end + '\n'
 
 print bold + center('Name')
 print center('(optional)') + end + cyan
-if not success:
-	name = raw_input()
+name = raw_input()
 if name != '':
-	if not success:
-		print del_line,
-	print center(name) + end + '\n'
+	print del_line + center(name) + end + '\n'
 else:
-	if not success:
-		print del_line,
-	print center('[none]') + end + '\n'
+	print del_line + center('[none]') + end + '\n'
 
 print bold + center('Twitter handle')
 print center('(optional)') + end + cyan
-if not success:
-	handle = raw_input('@')
+handle = raw_input('@')
 if handle != '' and handle[0] != '@':
 	handle = '@' + handle
-	if not success:
-		print del_line,
-	print center(handle) + end + '\n'
+	print del_line + center(handle) + end + '\n'
 else:
-	if not success:
-		print del_line,
-	print center('[none]') + end + '\n'
+	print del_line + center('[none]') + end + '\n'
 
 
 # get image from file, move to temp space
@@ -130,7 +96,7 @@ print center(image_file) + end + '\n'
 # wait to begin processing
 # go = raw_input(center('[press any key to set crop points]'))
 # print del_line + del_line + end
-print center('Cropping/de-skewing image') + cyan
+print center('Cropping image') + cyan
 
 
 # set crop points with a little Processing app
@@ -165,6 +131,25 @@ print center('brightness: ' + str(brightness_adjust))
 print center('sharpness: ' + str(sharpness_adjust)) + end
 
 
+# save full-res image
+# print '\n' + bold + center('Saving full-res image to file') + end + cyan
+# output_filename = re.sub(r'\s', '_', assignment)
+# output_path = os.path.join(os.path.sep, __location__, 'FinishedAssignments', output_filename + '.jpg')
+# img.save(output_path)
+# print center('[done]') + end
+
+
+# resize
+# print '\n' + bold + center('Resizing image') + end + cyan
+# w, h = img.size														# current image size after cropping
+# ratio = float(output_width / float(w))								# ratio of current width to output
+# print center('ratio: ' + str(ratio))
+
+# output_height = int((float(h) * ratio))								# set proportional height
+# img = img.resize((output_width, output_height), Image.ANTIALIAS)
+# print center(str(output_width) + ' x ' + str(output_height) + 'px') + end
+
+
 # save temp version to upload to Twitter
 print '\n' + bold + center('Saving image for Twitter') + end + cyan
 twitter_image = os.path.join(os.path.sep, __location__, 'data/temp.jpg')
@@ -173,6 +158,7 @@ print center('[done]') + end
 
 
 # format tweet
+'''
 print '\n' + bold + center('Formatting tweet') + end + cyan
 tweet = assignment + '; by '
 if handle != '':
@@ -204,12 +190,11 @@ access_token_key = 	  settings['oauth_token']
 access_token_secret = settings['oauth_secret']
 try:
 	api = twitter.Api(consumer_key = consumer_key, consumer_secret = consumer_secret, access_token_key = access_token_key, access_token_secret = access_token_secret)
-
-	status = api.PostMedia(status = tweet, media = 'data/temp.jpg')
+	status = api.PostMedia(status = tweet, media = output_path)
 	print center('[success!]') + end + '\n'
 except twitter.TwitterError:
 	print '\n' + api.message + end + '\n'
-
+'''
 
 # done!
 print '\n' + center('ALL DONE!') + '\n\n'

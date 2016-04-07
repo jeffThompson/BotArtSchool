@@ -186,7 +186,7 @@ else:
 if add_BAS_hashtag and len(tweet) < 125-14:
 	tweet += ' #BotArtSchool'
 if add_AND_hashtag and len(tweet) < 125-9:
-	tweet += ' #ANDFEST'
+	tweet += ' #artofbots'
 
 
 # print tweet (format for Terminal niceness)

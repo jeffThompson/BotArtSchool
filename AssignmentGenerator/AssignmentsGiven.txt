@@ -19,3 +19,6 @@
 18,Construct a drawing with supermarkets.,Jeff Thompson,
 19,Create a charcoal drawing with airports.,Jeff Thompson,
 20,Create a picture with powers.,Jeff Thompson,jeffthompson_
+21,Build a drawing with separations and organs.,Jeff Thompson,jeffthompson_
+22,Create a pen drawing of tachometers.,Jeff Thompson,jeffthompson_
+23,Create a line drawing of expenditures.,Jeff Thompson,jeffthompson_

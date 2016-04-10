@@ -1,0 +1,9 @@
+drawing
+line drawing
+shaded drawing
+cross-hatched drawing
+sketch
+picture
+pencil drawing
+pen drawing
+charcoal drawing

@@ -14,8 +14,7 @@ CROP BY POINTS
 
 String imageFilename = "temp.jpg";                // image file to load
 //String imageFilename = "/Users/JeffThompson/Pictures/Eyefi/IMG_9337.JPG";
-
-int maxWidth =          900;                      // max size of image
+int maxWidth =          1500;                     // max size of image
 color red =             color(243, 86, 69, 200);  // a nice red to match everything else
 
 PVector[] pts = new PVector[0];       // store x/y coords of crop points

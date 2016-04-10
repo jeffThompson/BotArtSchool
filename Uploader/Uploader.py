@@ -3,6 +3,12 @@
 BOT ART SCHOOL UPLOADER
 Jeff Thompson | 2016 | www.jeffreythompson.org
 
+REQUIRES:
+- PIL
+- colorcorrect
+	https://pypi.python.org/pypi/colorcorrect/0.04
+- python-twitter
+
 TO DO:
 - use grade? or upload to MTurk from here?
 
@@ -10,6 +16,8 @@ TO DO:
 
 import twitter, os, glob, re, time
 from PIL import Image, ImageEnhance
+import colorcorrect.algorithm as cca
+from colorcorrect.util import from_pil, to_pil
 
 import sys
 sys.path.insert(0, 'data')
@@ -17,22 +25,24 @@ from OAuthSettings_BOTTEST import settings
 
 
 # image adjustments
-contrast_adjust = 	1.1		# 1 = no change, 0.5 = 50%, 1.5 = 150%
-brightness_adjust = 1.3		# ditto
-sharpness_adjust = 	1.0		# 0.5 = no change, 0 = blurry, 1 = sharper
+contrast_adjust = 	 1.2		# 1 = no change, 0.5 = 50%, 1.5 = 150%
+brightness_adjust =  0.8		# ditto
+sharpness_adjust = 	 0.5		# 0.5 = no change, 0 = blurry, 1 = sharper
 
 # other settings
-add_BAS_hashtag = 	True
-add_AND_hashtag = 	False
-grade_it =  		False
+convert_bw = 		 False		# convert image to black and white?
+auto_white_balance = False		# auto adj white balance (uses retinex algo)
+add_BAS_hashtag = 	 True		# include #BotArtSchool if room
+add_AND_hashtag = 	 False		# include #ArtOfBots if room
+grade_it =  		 False		# submit to MTurk?
 
-image_path = '/Users/JeffThompson/Pictures/Eyefi/'
+image_path = 		 '../FinishedAssignments/'
 
-cyan = 		 '\033[36m'
-bold = 		 '\033[1m'
-reverse = 	 '\033[7m'
-end = 		 '\033[0m'
-del_line =   '\x1b[1A' + '\x1b[2K'
+cyan = 		 		 '\033[36m'
+bold = 		 		 '\033[1m'
+reverse = 	 		 '\033[7m'
+end = 		 		 '\033[0m'
+del_line =   		 '\x1b[1A' + '\x1b[2K'
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
@@ -57,11 +67,12 @@ print bold + reverse + center('BOT ART SCHOOL UPLOADER') + end + '\n'
 
 
 # if assignment has id, load info from that
-print bold + center('ID #') + end + cyan
+print bold + center('ID #')
+print center('(optional)') + end + cyan
 success = False
 assign_id = raw_input()
 if assign_id != '':
-	for line in reversed(open('../WorksheetGenerator/AssignmentsGiven.txt').readlines()):
+	for line in reversed(open('../AssignmentGenerator/AssignmentsGiven.txt').readlines()):
 		line = line.strip()
 		data = line.split(',')
 		if data[0] == assign_id:
@@ -75,56 +86,83 @@ if assign_id != '':
 			break
 
 
-# otherwise, input info manually
-print bold + center('Assignment') + end + cyan
-if not success:
+# id found? let's see what we found
+if success:
+	print bold + center('Assignment') + end + cyan
+	if assignment.endswith('.'):
+		assignment = assignment[:-1]
+	if len(assignment) > 60:
+		print split_center(assignment) + end + '\n'
+	else:
+		print center(assignment) + end + '\n'
+
+	print bold + center('Name')
+	print center('(optional)') + end + cyan
+	if name != '':
+		print center(name) + end + '\n'
+	else:
+		print center('[none]') + end + '\n'
+
+	print bold + center('Twitter handle')
+	print center('(optional)') + end + cyan
+	if handle != '' and handle[0] != '@':
+		handle = '@' + handle
+		print center(handle) + end + '\n'
+	else:
+		print center('[none]') + end + '\n'
+
+	# does this look right?
+	print bold + center('DOES THIS LOOK RIGHT?') + end + cyan
+	width = int(os.popen('stty size', 'r').read().split()[1])
+	answer = raw_input((' ' * ((width/2)-3)) + 'y/n: ')
+	if answer.lower() == 'n':
+		success = False
+	print (del_line * 3) + end
+
+
+# no id or not right info? input info manually
+else:
+	# id not found?
+	if assign_id != '':
+		print del_line + center(assign_id)
+		print center('(ID not found! Please enter manually)') + '\n'
+
+	print end + bold + center('Assignment') + end + cyan
 	assignment = raw_input()
-if assignment.endswith('.'):
-	assignment = assignment[:-1]
-if len(assignment) > 60:
-	if not success:
-		print del_line,
-	print split_center(assignment) + end + '\n'
-else:
-	if not success:
-		print del_line,
-	print center(assignment) + end + '\n'
+	if assignment.endswith('.'):
+		assignment = assignment[:-1]
+	if len(assignment) > 60:
+		print del_line + split_center(assignment) + end + '\n'
+	else:
+		print del_line + center(assignment) + end + '\n'
 
-print bold + center('Name')
-print center('(optional)') + end + cyan
-if not success:
+	print bold + center('Name')
+	print center('(optional)') + end + cyan
 	name = raw_input()
-if name != '':
-	if not success:
-		print del_line,
-	print center(name) + end + '\n'
-else:
-	if not success:
-		print del_line,
-	print center('[none]') + end + '\n'
+	if name != '':
+		print del_line + center(name) + end + '\n'
+	else:
+		print del_line + center('[none]') + end + '\n'
 
-print bold + center('Twitter handle')
-print center('(optional)') + end + cyan
-if not success:
+	print bold + center('Twitter handle')
+	print center('(optional)') + end + cyan
 	handle = raw_input('@')
-if handle != '' and handle[0] != '@':
-	handle = '@' + handle
-	if not success:
-		print del_line,
-	print center(handle) + end + '\n'
-else:
-	if not success:
-		print del_line,
-	print center('[none]') + end + '\n'
+	if handle != '' and handle[0] != '@':
+		handle = '@' + handle
+		print del_line + center(handle) + end + '\n'
+	else:
+		print del_line + center('[none]') + end + '\n'
 
 
 # get image from file, move to temp space
 print bold + center('Loading image') + end + cyan
 path = os.path.join(os.path.sep, __location__, image_path, '*.JPG')
-image_file = min(glob.iglob(path), key=os.path.getctime)
+image_file = sorted(glob.glob(path))[-1]
+# image_file = min(glob.iglob(path), key=os.path.getctime)
 img = Image.open(image_file)
 img.save('data/temp.jpg')
-print center(image_file) + end + '\n'
+path, filename = os.path.split(image_file)
+print center(image_path + filename) + end + '\n'
 
 
 # wait to begin processing
@@ -150,10 +188,13 @@ os.system(cmd)
 print del_line + center('[done]') + end + '\n'
 
 
-# convert to B&W, adjust levels, etc
+# convert to B&W, adjust levels, etto_pil(cca.retinex(from_pil(img))).show()c
 print bold + center('Correcting levels') + end + cyan
 img = Image.open('data/temp.jpg')
-img = img.convert('L')
+if convert_bw:
+	img = img.convert('L')
+if auto_white_balance:
+	img = to_pil(cca.retinex_with_adjust(from_pil(img)))
 enhancer = ImageEnhance.Contrast(img)
 img = enhancer.enhance(contrast_adjust)
 enhancer = ImageEnhance.Brightness(img)
@@ -179,6 +220,7 @@ if handle != '':
 	tweet += handle
 else:
 	tweet += name
+# tweet += ' - reply with grade! '
 
 
 # can we fit a hashtag?
@@ -207,8 +249,8 @@ try:
 
 	status = api.PostMedia(status = tweet, media = 'data/temp.jpg')
 	print center('[success!]') + end + '\n'
-except twitter.TwitterError:
-	print '\n' + api.message + end + '\n'
+except Exception as e:
+	print '\n' + str(e) + end + '\n'
 
 
 # done!
